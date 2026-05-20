@@ -2,6 +2,8 @@ import { renderLogin } from "../pages/login.js";
 import { renderDashboard } from "../pages/dashboard.js";
 import { renderShipment } from "../pages/shipment.js";
 import { renderFleet } from "../pages/fleet.js";
+import { renderCustomer } from "../pages/customer.js";
+import { renderCompliance } from "../pages/compliance.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -40,6 +42,16 @@ export function router() {
   if (path === "/fleet") {
   renderFleet();
   return;
+  }
+
+  if (path === "/customer") {
+    renderCustomer();
+    return;
+  }
+
+  if (path === "/compliance") {
+    renderCompliance();
+    return;
   }
 
   // fallback

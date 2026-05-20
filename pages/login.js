@@ -3,11 +3,11 @@ import { loadCSS } from "../js/utils/loadCSS.js";
 
 export function renderLogin() {
 
-  loadCSS("/mabutol-trucking/css/login.css");
+  loadCSS("./css/login.css");
   const app = document.getElementById("app");
 
   app.innerHTML = `
-  <link rel="stylesheet" href="./css/login.css" />
+
     <div class="login-page">
     <div class="overlay"></div>
 

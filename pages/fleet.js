@@ -3,11 +3,11 @@ import { navigate } from "../js/utils/navigate.js";
 
 export function renderFleet() {
 
-    loadCSS("/mabutol-trucking/css/fleet.css");
+  loadCSS("./css/fleet.css");
     const app = document.getElementById("app");
 
     app.innerHTML = `
-<link rel="stylesheet" href="./css/fleet.css" />
+
   <div class="dashboard">
 
     <!-- Sidebar -->
@@ -21,9 +21,53 @@ export function renderFleet() {
           ${createMenuItem("Dashboard", "/dashboard")}
           ${createMenuItem("Shipments", "/shipment")}
           ${createMenuItem("Fleet Management", "/fleet", true)}
-          ${createMenuItem("Customers")}
-          ${createMenuItem("Compliance")}
-          ${createMenuItem("Reports")}
+          ${createMenuItem("Customers", "/customer")}
+          ${createMenuItem("Compliance", "/compliance")}
+          <div class="menu-group">
+
+  <div
+    class="menu-item"
+    id="reportsToggle"
+  >
+    Reports
+  </div>
+
+  <div
+    class="submenu hidden"
+    id="reportsSubmenu"
+  >
+
+    <div
+      class="submenu-item active"
+      data-path="/reports"
+    >
+      Overview
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/shipments"
+    >
+      Shipments
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/drivers"
+    >
+      Drivers
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/revenue"
+    >
+      Revenue
+    </div>
+
+  </div>
+
+</div>
           ${createMenuItem("Settings")}
 
         </nav>
@@ -182,7 +226,9 @@ function card(title, value, color, note) {
 
 function attachFleetEvents() {
 
-    document.querySelectorAll(".menu-item").forEach((item) => {
+    document
+  .querySelectorAll(".menu-item, .submenu-item")
+  .forEach((item) => {
 
         item.addEventListener("click", () => {
 
@@ -191,6 +237,11 @@ function attachFleetEvents() {
             if (path) {
                 navigate(path);
             }
+            document
+        .querySelectorAll(".menu-item")
+        .forEach((i) => i.classList.remove("active"));
+
+      item.classList.add("active");
 
         });
 
@@ -207,5 +258,16 @@ function attachFleetEvents() {
         .addEventListener("input", (e) => {
             console.log("Searching fleet:", e.target.value);
         });
+
+        const reportsToggle = document.getElementById("reportsToggle");
+
+const reportsSubmenu =
+  document.getElementById("reportsSubmenu");
+
+reportsToggle.addEventListener("click", () => {
+
+  reportsSubmenu.classList.toggle("hidden");
+
+});
 
 }

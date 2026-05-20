@@ -1,28 +1,30 @@
 import { loadCSS } from "../js/utils/loadCSS.js";
 import { navigate } from "../js/utils/navigate.js";
 
-export function renderShipment() {
+export function renderCustomer() {
 
-  loadCSS("./css/shipment.css");
+    loadCSS("./css/customer.css");
 
   const app = document.getElementById("app");
 
   app.innerHTML = `
-   
+
   <div class="dashboard">
 
     <!-- Sidebar -->
     <aside class="sidebar">
+
       <div class="sidebar-top">
         <h2>Mabutol Tracking</h2>
         <p>NUEVA ECIJA LOGISTICS</p>
       </div>
 
       <nav class="menu">
+
         ${createMenuItem("Dashboard", "/dashboard")}
-        ${createMenuItem("Shipments", "/shipment", true)}
+        ${createMenuItem("Shipments", "/shipment")}
         ${createMenuItem("Fleet Management", "/fleet")}
-        ${createMenuItem("Customers", "/customer")}
+        ${createMenuItem("Customers", "/customer", true)}
         ${createMenuItem("Compliance", "/compliance")}
         <div class="menu-group">
 
@@ -70,12 +72,14 @@ export function renderShipment() {
 
 </div>
         ${createMenuItem("Settings")}
+
       </nav>
 
       <div class="sidebar-bottom">
         <span>Help Center</span>
         <span>Log Out</span>
       </div>
+
     </aside>
 
     <!-- Main -->
@@ -84,12 +88,12 @@ export function renderShipment() {
       <!-- Topbar -->
       <header class="topbar">
 
-        <h1>Shipments</h1>
+        <h1>Customers</h1>
 
         <input
           type="text"
-          id="shipmentSearch"
-          placeholder="Search shipment..."
+          placeholder="Search customers..."
+          id="customerSearch"
         />
 
         <div class="topbar-right">
@@ -103,67 +107,81 @@ export function renderShipment() {
       <section class="content">
 
         <div class="header">
-          <span>ACTIVE OPERATIONS</span>
-          <h2>Shipment Monitoring</h2>
+          <span>CUSTOMER MANAGEMENT</span>
+          <h2>Customer Directory</h2>
         </div>
 
         <!-- Stats -->
         <div class="stats">
 
-          ${card("In Transit", "18", "green", "Currently on the road")}
-          ${card("Loading", "4", "blue", "Preparing departure")}
-          ${card("Delayed", "3", "red", "Immediate action needed")}
-          ${card("On-Time Rate", "87%", "yellow", "Today's active shipments")}
+          ${card("Total Customers", "142", "blue", "Registered accounts")}
+          ${card("Active This Month", "87", "green", "Returning users")}
+          ${card("New This Week", "12", "yellow", "Recently registered")}
+          ${card("Suspended", "3", "red", "Requires review")}
 
         </div>
 
-        <!-- Table -->
-        <div class="shipment-table-card">
+        <!-- Customer Table -->
+        <div class="customer-table-card">
 
           <div class="table-header">
+
             <input
               type="text"
               class="table-search"
-              placeholder="Search by shipment ID..."
+              placeholder="Search customer..."
             />
+
           </div>
 
-          <table class="shipment-table">
+          <table class="customer-table">
 
             <thead>
               <tr>
-                <th>Shipment ID</th>
-                <th>Origin</th>
-                <th>Destination</th>
+                <th>Customer</th>
+                <th>Phone</th>
+                <th>Bookings</th>
+                <th>Last Booking</th>
                 <th>Status</th>
-                <th>Driver</th>
               </tr>
             </thead>
 
             <tbody>
 
               <tr>
-                <td>SHP-8042</td>
-                <td>Cabanatuan</td>
-                <td>Gapan City</td>
-                <td><span class="status transit">IN TRANSIT</span></td>
-                <td>Ricardo Mendoza</td>
+                <td>Reyna Pascual</td>
+                <td>0918 234 5678</td>
+                <td>14 bookings</td>
+                <td>Today 09:15 AM</td>
+                <td>
+                  <span class="status active">
+                    ACTIVE
+                  </span>
+                </td>
               </tr>
 
               <tr>
-                <td>SHP-8039</td>
-                <td>San Jose City</td>
-                <td>Science City</td>
-                <td><span class="status delayed">DELAYED</span></td>
-                <td>Eduardo Garcia</td>
+                <td>Ernesto Villanueva</td>
+                <td>0923 521 1238</td>
+                <td>8 bookings</td>
+                <td>Yesterday</td>
+                <td>
+                  <span class="status active">
+                    ACTIVE
+                  </span>
+                </td>
               </tr>
 
               <tr>
-                <td>SHP-8050</td>
-                <td>Talavera</td>
-                <td>Guimba</td>
-                <td><span class="status loading">LOADING</span></td>
-                <td>Jose Dizon</td>
+                <td>Maricel Soriano</td>
+                <td>0936 623 6734</td>
+                <td>1 booking</td>
+                <td>Oct 10, 2025</td>
+                <td>
+                  <span class="status suspended">
+                    SUSPENDED
+                  </span>
+                </td>
               </tr>
 
             </tbody>
@@ -179,7 +197,7 @@ export function renderShipment() {
   </div>
   `;
 
-  attachShipmentEvents();
+  attachCustomerEvents();
 }
 
 /* Helpers */
@@ -189,7 +207,7 @@ function createMenuItem(name, path, active = false) {
   return `
     <div
       class="menu-item ${active ? "active" : ""}"
-      data-path="${path}"
+      data-path="${path || ""}"
     >
       ${name}
     </div>
@@ -197,6 +215,7 @@ function createMenuItem(name, path, active = false) {
 }
 
 function card(title, value, color, note) {
+
   return `
     <div class="stat-card">
       <h4>${title}</h4>
@@ -208,7 +227,7 @@ function card(title, value, color, note) {
 
 /* Events */
 
-function attachShipmentEvents() {
+function attachCustomerEvents() {
 
   document
   .querySelectorAll(".menu-item, .submenu-item")
@@ -216,13 +235,13 @@ function attachShipmentEvents() {
 
     item.addEventListener("click", () => {
 
-  const path = item.dataset.path;
+      const path = item.dataset.path;
 
-  if (path) {
-    navigate(path);
-  }
+      if (path) {
+        navigate(path);
+      }
 
-      document
+    document
         .querySelectorAll(".menu-item")
         .forEach((i) => i.classList.remove("active"));
 

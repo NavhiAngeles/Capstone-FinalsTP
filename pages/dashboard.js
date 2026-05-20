@@ -3,11 +3,11 @@ import { navigate } from "../js/utils/navigate.js";
 
 export function renderDashboard() {
 
-  loadCSS("/mabutol-trucking/css/dashboard.css");
+  loadCSS("./css/dashboard.css");
   const app = document.getElementById("app");
 
   app.innerHTML = `
-  <link rel="stylesheet" href="./css/dashboard.css" />
+
   <div class="dashboard">
 
     <!-- Sidebar -->
@@ -21,9 +21,53 @@ export function renderDashboard() {
         ${createMenuItem("Dashboard", "/dashboard", true)}
         ${createMenuItem("Shipments", "/shipment")}
         ${createMenuItem("Fleet Management", "/fleet")}
-        ${createMenuItem("Customers")}
-        ${createMenuItem("Compliance")}
-        ${createMenuItem("Reports")}
+        ${createMenuItem("Customers", "/customer")}
+        ${createMenuItem("Compliance", "/compliance")}
+        <div class="menu-group">
+
+  <div
+    class="menu-item"
+    id="reportsToggle"
+  >
+    Reports
+  </div>
+
+  <div
+    class="submenu hidden"
+    id="reportsSubmenu"
+  >
+
+    <div
+      class="submenu-item active"
+      data-path="/reports"
+    >
+      Overview
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/shipments"
+    >
+      Shipments
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/drivers"
+    >
+      Drivers
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/revenue"
+    >
+      Revenue
+    </div>
+
+  </div>
+
+</div>
         ${createMenuItem("Settings")}
       </nav>
 
@@ -157,7 +201,9 @@ function card(title, value, color, note) {
 /* Events */
 function attachDashboardEvents() {
 
-  document.querySelectorAll(".menu-item").forEach((item) => {
+  document
+  .querySelectorAll(".menu-item, .submenu-item")
+  .forEach((item) => {
 
     item.addEventListener("click", () => {
 
@@ -187,5 +233,16 @@ function attachDashboardEvents() {
     .addEventListener("input", (e) => {
       console.log("Searching:", e.target.value);
     });
+
+    const reportsToggle = document.getElementById("reportsToggle");
+
+const reportsSubmenu =
+  document.getElementById("reportsSubmenu");
+
+reportsToggle.addEventListener("click", () => {
+
+  reportsSubmenu.classList.toggle("hidden");
+
+});
 
 }
