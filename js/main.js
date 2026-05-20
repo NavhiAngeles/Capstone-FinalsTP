@@ -1,0 +1,53 @@
+import { renderLogin } from "../pages/login.js";
+import { renderDashboard } from "../pages/dashboard.js";
+import { renderShipment } from "../pages/shipment.js";
+import { renderFleet } from "../pages/fleet.js";
+
+const BASE = "/" + window.location.pathname.split("/")[1];
+
+export function router() {
+  let path = window.location.pathname;
+
+  console.log("PATH:", path);
+
+  // Remove project base (important for localhost)
+
+  if (path.startsWith(BASE)) {
+    path = path.replace(BASE, "");
+  }
+
+  // Normalize
+  if (path === "" || path === "/" || path === "/index.html") {
+    renderLogin();
+    return;
+  }
+
+  if (path === "/login") {
+    renderLogin();
+    return;
+  }
+
+  if (path === "/dashboard") {
+    renderDashboard();
+    return;
+  }
+
+  if (path === "/shipment") {
+    renderShipment();
+    return;
+  }
+
+  if (path === "/fleet") {
+  renderFleet();
+  return;
+  }
+
+  // fallback
+  renderLogin();
+}
+
+// Initial load
+window.addEventListener("DOMContentLoaded", router);
+
+// Back/forward buttons
+window.addEventListener("popstate", router);
