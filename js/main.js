@@ -12,6 +12,7 @@ import { renderSettingsAccount } from "../pages/settings/account.js";
 import { renderSettingsNotifications } from "../pages/settings/notifications.js";
 import { renderSettingsPricing } from "../pages/settings/pricing.js";
 import { renderComplianceThresholds } from "../pages/settings/complianceThresholds.js";
+import { renderUserManagement } from "../pages/settings/userManagement.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -102,6 +103,11 @@ export function router() {
   if (path === "/settings/complianceThresholds") {
   renderComplianceThresholds();
   return; 
+  }
+
+  if (path === "/settings/userManagement") {
+  renderUserManagement();
+  return;
   }
 
   // fallback

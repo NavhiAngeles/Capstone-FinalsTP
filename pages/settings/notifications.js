@@ -67,9 +67,12 @@ export function renderSettingsNotifications() {
   Compliance Thresholds
 </div>
 
-            <div class="submenu-item">
-              User Management
-            </div>
+            <div
+  class="submenu-item"
+  data-path="/settings/userManagement"
+>
+  User Management
+</div>
 
             <div class="submenu-item">
               Security
