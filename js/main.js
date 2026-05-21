@@ -6,6 +6,7 @@ import { renderCustomer } from "../pages/customer.js";
 import { renderCompliance } from "../pages/compliance.js";
 import { renderReportsOverview } from "../pages/report/overview.js";
 import { renderReportsShipments } from "../pages/report/shipmentReport.js";
+import { renderDriverReport } from "../pages/report/driverReport.js";
 import { renderRevenueReport } from "../pages/report/revenueReport.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
@@ -66,6 +67,11 @@ export function router() {
   if (path === "/report/shipmentReport") {
     renderReportsShipments();
     return;
+  }
+
+  if (path === "/report/driverReport") {
+  renderDriverReport();
+  return;
   }
 
   if (path === "/report/revenueReport") {
