@@ -46,9 +46,12 @@ export function renderSettingsAccount() {
               Account
             </div>
 
-            <div class="submenu-item">
-              Notifications
-            </div>
+            <div
+  class="submenu-item"
+  data-path="/settings/notifications"
+>
+  Notifications
+</div>
 
             <div class="submenu-item">
               Pricing

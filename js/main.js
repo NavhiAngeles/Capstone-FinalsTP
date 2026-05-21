@@ -9,6 +9,7 @@ import { renderReportsShipments } from "../pages/report/shipmentReport.js";
 import { renderDriverReport } from "../pages/report/driverReport.js";
 import { renderRevenueReport } from "../pages/report/revenueReport.js";
 import { renderSettingsAccount } from "../pages/settings/account.js";
+import { renderSettingsNotifications } from "../pages/settings/notifications.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -85,6 +86,11 @@ export function router() {
   renderSettingsAccount();
   return;
   }
+
+  if (path === "/settings/notifications") {
+  renderSettingsNotifications();
+  return;
+  } 
 
   // fallback
   renderLogin();
