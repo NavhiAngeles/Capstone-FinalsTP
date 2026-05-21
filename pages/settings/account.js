@@ -74,9 +74,12 @@ export function renderSettingsAccount() {
   User Management
 </div>
 
-            <div class="submenu-item">
-              Security
-            </div>
+            <div
+  class="submenu-item"
+  data-path="/settings/security"
+>
+  Security
+</div>
 
           </div>
 

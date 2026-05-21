@@ -13,6 +13,7 @@ import { renderSettingsNotifications } from "../pages/settings/notifications.js"
 import { renderSettingsPricing } from "../pages/settings/pricing.js";
 import { renderComplianceThresholds } from "../pages/settings/complianceThresholds.js";
 import { renderUserManagement } from "../pages/settings/userManagement.js";
+import { renderSecuritySettings } from "../pages/settings/security.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -107,6 +108,11 @@ export function router() {
 
   if (path === "/settings/userManagement") {
   renderUserManagement();
+  return;
+  }
+
+  if (path === "/settings/security") {
+  renderSecuritySettings();
   return;
   }
 
