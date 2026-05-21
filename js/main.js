@@ -11,6 +11,7 @@ import { renderRevenueReport } from "../pages/report/revenueReport.js";
 import { renderSettingsAccount } from "../pages/settings/account.js";
 import { renderSettingsNotifications } from "../pages/settings/notifications.js";
 import { renderSettingsPricing } from "../pages/settings/pricing.js";
+import { renderComplianceThresholds } from "../pages/settings/complianceThresholds.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -96,6 +97,11 @@ export function router() {
   if (path === "/settings/pricing") {
   renderSettingsPricing();
   return;
+  }
+
+  if (path === "/settings/complianceThresholds") {
+  renderComplianceThresholds();
+  return; 
   }
 
   // fallback

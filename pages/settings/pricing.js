@@ -60,9 +60,12 @@ export function renderSettingsPricing() {
               Pricing
             </div>
 
-            <div class="submenu-item">
-              Compliance Thresholds
-            </div>
+            <div
+  class="submenu-item"
+  data-path="/settings/complianceThresholds"
+>
+  Compliance Thresholds
+</div>
 
             <div class="submenu-item">
               User Management
