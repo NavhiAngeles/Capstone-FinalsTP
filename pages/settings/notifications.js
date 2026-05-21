@@ -53,9 +53,12 @@ export function renderSettingsNotifications() {
               Notifications
             </div>
 
-            <div class="submenu-item">
-              Pricing
-            </div>
+            <div
+  class="submenu-item"
+  data-path="/settings/pricing"
+>
+  Pricing
+</div>
 
             <div class="submenu-item">
               Compliance Thresholds
