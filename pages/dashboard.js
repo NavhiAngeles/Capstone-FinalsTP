@@ -46,21 +46,21 @@ export function renderDashboard() {
 
     <div
       class="submenu-item"
-      data-path="/reports/shipments"
+      data-path="/report/shipmentReport"
     >
       Shipments
     </div>
 
     <div
       class="submenu-item"
-      data-path="/reports/drivers"
+      data-path="/report/driverReport"
     >
       Drivers
     </div>
 
     <div
       class="submenu-item"
-      data-path="/reports/revenue"
+      data-path="/report/revenueReport"
     >
       Revenue
     </div>

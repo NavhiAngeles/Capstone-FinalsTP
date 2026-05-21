@@ -1,9 +1,11 @@
 import { loadCSS } from "../../js/utils/loadCSS.js";
 import { navigate } from "../../js/utils/navigate.js";
 
-export function renderReportsOverview() {
+export function renderRevenueReport() {
 
-  loadCSS("/MABUTOL-TRUCKING-MAIN%20ORIGINAL/css/report/overview.css");
+  loadCSS(
+    "/MABUTOL-TRUCKING-MAIN%20ORIGINAL/css/report/revenueReport.css"
+  );
 
   const app = document.getElementById("app");
 
@@ -15,7 +17,7 @@ export function renderReportsOverview() {
     <aside class="sidebar">
 
       <div class="sidebar-top">
-        <h2>Mabutol Tracking</h2>
+        <h2>TANAW</h2>
         <p>NUEVA ECIJA LOGISTICS</p>
       </div>
 
@@ -27,20 +29,14 @@ export function renderReportsOverview() {
         ${menuItem("Customers", "/customer")}
         ${menuItem("Compliance", "/compliance")}
 
-        <!-- Reports Dropdown -->
+        <!-- Reports -->
         <div class="menu-group">
 
-          <div
-            class="menu-item active"
-            id="reportsToggle"
-          >
+          <div class="menu-item active">
             Reports
           </div>
 
-          <div
-            class="submenu"
-            id="reportsSubmenu"
-          >
+          <div class="submenu">
 
             <div
               class="submenu-item"
@@ -64,7 +60,7 @@ export function renderReportsOverview() {
             </div>
 
             <div
-              class="submenu-item"
+              class="submenu-item active"
               data-path="/report/revenueReport"
             >
               Revenue
@@ -91,8 +87,6 @@ export function renderReportsOverview() {
       <!-- Topbar -->
       <header class="topbar">
 
-        <h1>Reports — Overview</h1>
-
         <input
           type="text"
           placeholder="Search..."
@@ -112,10 +106,12 @@ export function renderReportsOverview() {
         <div class="header-row">
 
           <div>
-            <h2>Reports Overview</h2>
+            <h2>Reports — Revenue</h2>
+
             <p>
-              Track operational performance
-              and logistics metrics.
+              Monitor financial performance
+              across shipments, customers,
+              and routes.
             </p>
           </div>
 
@@ -136,6 +132,14 @@ export function renderReportsOverview() {
         <!-- Filters -->
         <div class="filters">
 
+          <button class="filter">
+            Today
+          </button>
+
+          <button class="filter">
+            This Week
+          </button>
+
           <button class="filter active">
             This Month
           </button>
@@ -154,58 +158,81 @@ export function renderReportsOverview() {
         <div class="stats">
 
           ${statCard(
-            "Total Shipments",
-            "284",
-            "+12%",
-            "green"
-          )}
-
-          ${statCard(
-            "On-Time Rate",
-            "87%",
-            "-3%",
-            "red"
-          )}
-
-          ${statCard(
-            "Total Revenue",
+            "Gross Revenue",
             "₱1.24M",
             "+8%",
             "green"
           )}
 
           ${statCard(
-            "Fleet Utilization",
-            "83%",
+            "Net Revenue",
+            "₱980,500",
+            "+5%",
+            "green"
+          )}
+
+          ${statCard(
+            "Operating Costs",
+            "₱260,000",
             "-0%",
             "gray"
           )}
 
+          ${statCard(
+            "Rev Per Shipment",
+            "₱4,368",
+            "+2%",
+            "green"
+          )}
+
         </div>
 
-        <!-- Analytics Grid -->
+        <!-- Charts -->
         <div class="analytics-grid">
 
-          <div class="chart-card">
+          <!-- Revenue Trend -->
+          <div class="chart-card wide">
 
             <div class="card-header">
-              <h3>Shipment Volume</h3>
+
+              <h3>Revenue Over Time</h3>
+
+              <button class="filter small">
+                Last 30 Days
+              </button>
+
             </div>
 
             <div class="chart-placeholder">
-              Chart Area
+              Revenue Trend Chart
             </div>
 
           </div>
 
+          <!-- Cost Breakdown -->
           <div class="chart-card">
 
             <div class="card-header">
-              <h3>Revenue vs Target</h3>
+              <h3>Operating Cost Breakdown</h3>
             </div>
 
-            <div class="chart-placeholder">
-              Chart Area
+            <div class="bar-chart">
+
+              <div class="bar-group">
+                <div class="bar fuel"></div>
+                <div class="bar maintenance"></div>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar fuel short"></div>
+                <div class="bar maintenance tall"></div>
+              </div>
+
+              <div class="bar-group">
+                <div class="bar fuel"></div>
+                <div class="bar maintenance taller"></div>
+              </div>
+
             </div>
 
           </div>
@@ -215,12 +242,95 @@ export function renderReportsOverview() {
         <!-- Bottom Grid -->
         <div class="bottom-grid">
 
+          <!-- Top Customers -->
           <div class="info-card">
-            <h3>Top Performing Drivers</h3>
+
+            <div class="card-header">
+
+              <h3>Top Customers</h3>
+
+              <button class="more-btn">
+                ⋯
+              </button>
+
+            </div>
+
+            <div class="customer-list">
+
+              <div class="customer-row">
+                <span>Alpha Industries</span>
+                <strong>₱450k</strong>
+              </div>
+
+              <div class="customer-row">
+                <span>Delta Logistics Group</span>
+                <strong>₱320k</strong>
+              </div>
+
+              <div class="customer-row">
+                <span>Metro Retail Corp</span>
+                <strong>₱210k</strong>
+              </div>
+
+            </div>
+
           </div>
 
+          <!-- Revenue Breakdown -->
           <div class="info-card">
-            <h3>Compliance Snapshot</h3>
+
+            <div class="card-header">
+
+              <h3>Revenue Breakdown by Route</h3>
+
+              <button class="view-btn">
+                View All →
+              </button>
+
+            </div>
+
+            <table class="report-table">
+
+              <thead>
+                <tr>
+                  <th>Route ID</th>
+                  <th>Origin → Destination</th>
+                  <th>Shipments</th>
+                  <th>Revenue</th>
+                  <th>Margin</th>
+                </tr>
+              </thead>
+
+              <tbody>
+
+                <tr>
+                  <td>RT-01</td>
+                  <td>Cabanatuan → Gapan</td>
+                  <td>42</td>
+                  <td>₱180k</td>
+                  <td>24%</td>
+                </tr>
+
+                <tr>
+                  <td>RT-04</td>
+                  <td>Talavera → Guimba</td>
+                  <td>28</td>
+                  <td>₱140k</td>
+                  <td>19%</td>
+                </tr>
+
+                <tr>
+                  <td>RT-09</td>
+                  <td>San Jose → Science City</td>
+                  <td>31</td>
+                  <td>₱165k</td>
+                  <td>22%</td>
+                </tr>
+
+              </tbody>
+
+            </table>
+
           </div>
 
         </div>
@@ -232,7 +342,7 @@ export function renderReportsOverview() {
   </div>
   `;
 
-  attachOverviewEvents();
+  attachEvents();
 }
 
 /* Helpers */
@@ -268,7 +378,7 @@ function statCard(title, value, change, color) {
 
 /* Events */
 
-function attachOverviewEvents() {
+function attachEvents() {
 
   document
     .querySelectorAll(".menu-item, .submenu-item")
@@ -279,7 +389,7 @@ function attachOverviewEvents() {
         const path = item.dataset.path;
 
         if (path) {
-            navigate(path);
+          navigate(path);
         }
 
       });
