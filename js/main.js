@@ -8,6 +8,7 @@ import { renderReportsOverview } from "../pages/report/overview.js";
 import { renderReportsShipments } from "../pages/report/shipmentReport.js";
 import { renderDriverReport } from "../pages/report/driverReport.js";
 import { renderRevenueReport } from "../pages/report/revenueReport.js";
+import { renderSettingsAccount } from "../pages/settings/account.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -76,6 +77,12 @@ export function router() {
 
   if (path === "/report/revenueReport") {
     renderRevenueReport();
+  return;
+  }
+
+  // Settings
+  if (path === "/settings/account") {
+  renderSettingsAccount();
   return;
   }
 

@@ -70,7 +70,10 @@ export function renderDriverReport() {
 
         </div>
 
-        ${menuItem("Settings")}
+        ${menuItem(
+  "Settings",
+  "/settings/account"
+)}
 
       </nav>
 

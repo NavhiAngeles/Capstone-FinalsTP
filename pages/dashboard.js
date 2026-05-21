@@ -68,7 +68,10 @@ export function renderDashboard() {
   </div>
 
 </div>
-        ${createMenuItem("Settings")}
+        ${createMenuItem(
+  "Settings",
+  "/settings/account"
+)}
       </nav>
 
       <div class="sidebar-bottom">

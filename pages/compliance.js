@@ -71,7 +71,10 @@ export function renderCompliance() {
   </div>
 
 </div>
-        ${createMenuItem("Settings")}
+        ${createMenuItem(
+  "Settings",
+  "/settings/account"
+)}
 
       </nav>
 

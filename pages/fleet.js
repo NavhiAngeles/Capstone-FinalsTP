@@ -68,7 +68,10 @@ export function renderFleet() {
   </div>
 
 </div>
-          ${createMenuItem("Settings")}
+          ${createMenuItem(
+  "Settings",
+  "/settings/account"
+)}
 
         </nav>
 

@@ -71,7 +71,10 @@ export function renderCustomer() {
   </div>
 
 </div>
-        ${createMenuItem("Settings")}
+        ${createMenuItem(
+  "Settings",
+  "/settings/account"
+)}
 
       </nav>
 

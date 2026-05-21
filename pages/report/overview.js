@@ -74,7 +74,10 @@ export function renderReportsOverview() {
 
         </div>
 
-        ${menuItem("Settings")}
+        ${menuItem(
+  "Settings",
+  "/settings/account"
+)}
 
       </nav>
 
