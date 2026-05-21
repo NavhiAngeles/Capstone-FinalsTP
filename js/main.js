@@ -4,6 +4,7 @@ import { renderShipment } from "../pages/shipment.js";
 import { renderFleet } from "../pages/fleet.js";
 import { renderCustomer } from "../pages/customer.js";
 import { renderCompliance } from "../pages/compliance.js";
+import { renderReportsOverview } from "../pages/report/overview.js";
 
 const BASE = "/" + window.location.pathname.split("/")[1];
 
@@ -53,6 +54,12 @@ export function router() {
     renderCompliance();
     return;
   }
+
+  // Reports
+  if (path === "/report/overview") {
+  renderReportsOverview();
+  return;
+}
 
   // fallback
   renderLogin();

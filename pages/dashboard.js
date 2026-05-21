@@ -39,7 +39,7 @@ export function renderDashboard() {
 
     <div
       class="submenu-item active"
-      data-path="/reports"
+      data-path="/report/overview"
     >
       Overview
     </div>

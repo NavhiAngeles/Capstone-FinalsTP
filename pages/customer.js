@@ -42,7 +42,7 @@ export function renderCustomer() {
 
     <div
       class="submenu-item active"
-      data-path="/reports"
+      data-path="/report/overview"
     >
       Overview
     </div>
@@ -258,9 +258,9 @@ function attachCustomerEvents() {
     });
 
   document
-    .getElementById("shipmentSearch")
+    .getElementById("customerSearch")
     .addEventListener("input", (e) => {
-      console.log("Searching shipment:", e.target.value);
+      console.log("Searching customer:", e.target.value);
     });
 
     const reportsToggle = document.getElementById("reportsToggle");

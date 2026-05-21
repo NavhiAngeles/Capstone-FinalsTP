@@ -26,7 +26,51 @@ export function renderCompliance() {
         ${createMenuItem("Fleet Management", "/fleet")}
         ${createMenuItem("Customers", "/customer")}
         ${createMenuItem("Compliance", "/compliance", true)}
-        ${createMenuItem("Reports")}
+        <div class="menu-group">
+
+  <div
+    class="menu-item"
+    id="reportsToggle"
+  >
+    Reports
+  </div>
+
+  <div
+    class="submenu hidden"
+    id="reportsSubmenu"
+  >
+
+    <div
+      class="submenu-item active"
+      data-path="/report/overview"
+    >
+      Overview
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/shipments"
+    >
+      Shipments
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/drivers"
+    >
+      Drivers
+    </div>
+
+    <div
+      class="submenu-item"
+      data-path="/reports/revenue"
+    >
+      Revenue
+    </div>
+
+  </div>
+
+</div>
         ${createMenuItem("Settings")}
 
       </nav>
@@ -177,7 +221,9 @@ function card(title, value, color, note) {
 
 function attachComplianceEvents() {
 
-  document.querySelectorAll(".menu-item").forEach((item) => {
+  document
+  .querySelectorAll(".menu-item, .submenu-item")
+  .forEach((item) => {
 
     item.addEventListener("click", () => {
 
@@ -187,8 +233,37 @@ function attachComplianceEvents() {
         navigate(path);
       }
 
+    document
+        .querySelectorAll(".menu-item")
+        .forEach((i) => i.classList.remove("active"));
+
+      item.classList.add("active");
+
     });
 
   });
+
+  document
+    .getElementById("notifBtn")
+    .addEventListener("click", () => {
+      alert("No new notifications");
+    });
+
+  document
+    .getElementById("complianceSearch")
+    .addEventListener("input", (e) => {
+      console.log("Searching compliance:", e.target.value);
+    });
+
+    const reportsToggle = document.getElementById("reportsToggle");
+
+const reportsSubmenu =
+  document.getElementById("reportsSubmenu");
+
+reportsToggle.addEventListener("click", () => {
+
+  reportsSubmenu.classList.toggle("hidden");
+
+});
 
 }
