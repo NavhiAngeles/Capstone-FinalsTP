@@ -80,7 +80,7 @@ export function renderFleet() {
         <span>Log Out</span>
       </div>
 
-    </aside>a
+    </aside>
 
     <!-- Main -->
     <main class="main">
